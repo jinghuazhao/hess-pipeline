@@ -8,7 +8,7 @@ rt2=$4
 
 awk=/bin/awk
 join=/usr/bin/join
-python=/genetics/data/software/bin/python
+python=/usr/local/Cluster-Apps/python/2.7.5/bin/python
 gunzip=/bin/gunzip
 sort=/bin/sort
 
