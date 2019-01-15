@@ -1,9 +1,15 @@
 #!/bin/bash
-# 27-2-2017 MRC-Epid JHZ
+# 11-1-2019 JHZ
 
-trait=$1
-HESS=/genetics/bin/hess
-wd=$(pwd)/$(basename $trait).tmp
+. /etc/profile.d/modules.sh
+module load python/2.7.10
+
+export trait=$1
+export HESS=/scratch/jhz22/hess
+export HESS_pipeline=/scratch/jhz22/hess-pipeline
+export wd=$(pwd)/$(basename $trait).tmp
+
+echo $wd
 
 if [ ! -d $wd ]; then
    mkdir -p $wd
@@ -12,7 +18,11 @@ cd $wd
 
 # Step 0/1 - setup/eigenvalues and projections
 
-parallel -j11 $HESS/hess.subs {1} {2} {3} {4} ::: $(seq 22) ::: $trait ::: $HESS ::: $wd
+parallel -j11 --env HESS_pipeline \
+              --env HESS \
+              --env trait \
+              --env wd \
+  $HESS_pipeline/hess.subs {} ::: $(seq 22)
 
 # Step 2 - compute local SNP heritability
   
