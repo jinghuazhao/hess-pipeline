@@ -14,6 +14,6 @@ hess.sh `GWAS-summary-statistics`
 
 where `GWAS-summary-statistics` has these columns: rsID, pos, A1, A2, Z, N.
 
-Recently there has been considerable changes as decribed in software-notes repository, we have [height.sh](height/height.sh) to reflect this.
+Recently there has been considerable changes as decribed in software-notes repository, we have [height.sh](height/height.sh) to reflect this whereas ealier version is available from the release.
 
 NOTE finally that HESS describes bed file as with UCSC (https://genome.ucsc.edu/).
