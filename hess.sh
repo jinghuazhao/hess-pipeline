@@ -22,7 +22,7 @@ parallel -j11 --env HESS_pipeline \
               --env HESS \
               --env trait \
               --env wd \
-  $HESS_pipeline/hess.subs {} ::: $(seq 22)
+              $HESS_pipeline/hess.subs {} ::: $(seq 22)
 
 # Step 2 - compute local SNP heritability
   

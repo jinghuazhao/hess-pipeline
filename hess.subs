@@ -1,5 +1,5 @@
 #!/bin/bash
-# 11-1-2019 JHZ
+# 15-1-2019 JHZ
 
 chr=$1
 
@@ -13,20 +13,23 @@ sort=/bin/sort
 
 # Step 0 - GWAS summary statistics
 
-gunzip -c $HESS/1kg_eur_1pct/1kg_phase3_chr${chr}_eur_5pct_legend.txt.gz | \
-sort -k1,1 | \
-awk -vOFS="\t" '{print NR,$1,0,$2,$3,$4}' > legend${chr}.txt
+# gunzip -c $HESS/1kg_eur_1pct/1kg_phase3_chr${chr}_eur_5pct_legend.txt.gz | \
+# sort -k1,1 | \
+# awk -vOFS="\t" '{print NR,$1,0,$2,$3,$4}' > legend${chr}.txt
 
-$join -12 -21 legend${chr}.txt ../$trait | \
-$awk -f $HESS_pipeline/hess.awk | \
-sort -n -k2,2 > ${trait}.${chr}.dat
+# $join -12 -21 legend${chr}.txt ../$trait | \
+# $awk -f $HESS_pipeline/hess.awk | \
+# sort -n -k2,2 > ${trait}.${chr}.dat
 
 # Step 1 - compute eigenvalues and projections
 
 $python $HESS/hess.py \
+  --local-hsqg $trait \
   --chrom $chr \
-  --h2g $trait.$chr.dat \
-  --reference-panel $HESS/1kg_eur_1pct/1kg_phase3_chr${chr}_eur_5pct_gen.txt.gz \
-  --legend-file $HESS/1kg_eur_1pct/1kg_phase3_chr${chr}_eur_5pct_legend.txt.gz \
+  --bfile $HESS/1kg_eur_1pct/1kg_eur_1pct_chr${chrom} \
   --partition-file $HESS/nygcresearch-ldetect-data-ac125e47bf7f/EUR/fourier_ls-chr${chr}.bed \
   --out $trait
+
+#  --h2g $trait.$chr.dat \
+#  --reference-panel $HESS/1kg_eur_1pct/1kg_phase3_chr${chr}_eur_5pct_gen.txt.gz \
+#  --legend-file $HESS/1kg_eur_1pct/1kg_phase3_chr${chr}_eur_5pct_legend.txt.gz \
