@@ -14,7 +14,7 @@ if [ ! -d $wd ]; then
    mkdir -p $wd
 fi
 cd $wd
-ln -fs $trait
+ln -fs ${pwd}$trait
 
 # Step 1 - setup/eigenvalues and projections
 
