@@ -12,3 +12,4 @@ git add st.sh
 git commit -m "st.sh"
 git add oldrelease
 git commit -m "Old release"
+git push
