@@ -3,6 +3,8 @@
 
 export HEIGHT=https://portals.broadinstitute.org/collaboration/giant/images/0/01/GIANT_HEIGHT_Wood_et_al_2014_publicrelease_HapMapCeuFreq.txt.gz
 
+# snp150.txt as described in https://github.com/jinghuazhao/SUMSTATS
+
 wget -qO- $HEIGHT | \
 awk 'NR>1' | \
 sort -k1,1 | \
