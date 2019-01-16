@@ -17,9 +17,9 @@ cd $wd
 
 # Step 1 - setup/eigenvalues and projections
 
-parallel -j11 --env HESS \
-              --env trait \
-              'python $HESS/hess.py \
+parallel -j5 --env HESS \
+             --env trait \
+             'python $HESS/hess.py \
                      --local-hsqg $trait \
                      --chrom {} \
                      --bfile $HESS/1kg_eur_1pct/1kg_eur_1pct_chr{} \
