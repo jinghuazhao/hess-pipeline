@@ -6,7 +6,6 @@ module load python/2.7.10
 
 export trait=$1
 export HESS=/scratch/jhz22/hess
-export HESS_pipeline=/scratch/jhz22/hess-pipeline
 export wd=$(pwd)/$(basename $trait).tmp
 
 echo $wd
@@ -18,13 +17,11 @@ cd $wd
 
 # Step 1 - setup/eigenvalues and projections
 
-parallel -j11 --env HESS_pipeline \
-              --env HESS \
+parallel -j11 --env HESS \
               --env trait \
-              --env wd \
               'python $HESS/hess.py \
                      --local-hsqg $trait \
-                     --chrom $chr \
+                     --chrom {} \
                      --bfile $HESS/1kg_eur_1pct/1kg_eur_1pct_chr{} \
                      --partition-file $HESS/nygcresearch-ldetect-data-ac125e47bf7f/EUR/fourier_ls-chr{}.bed \
                      --out $trait' ::: $(seq 22)
