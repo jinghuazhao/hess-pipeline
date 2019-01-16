@@ -14,13 +14,14 @@ if [ ! -d $wd ]; then
    mkdir -p $wd
 fi
 cd $wd
+ln -fs $trait
 
 # Step 1 - setup/eigenvalues and projections
 
 parallel -j5 --env HESS \
              --env trait \
              'python $HESS/hess.py \
-                     --local-hsqg $trait \
+                     --local-hsqg ../$trait \
                      --chrom {} \
                      --bfile $HESS/1kg_eur_1pct/1kg_eur_1pct_chr{} \
                      --partition $HESS/nygcresearch-ldetect-data-ac125e47bf7f/EUR/fourier_ls-chr{}.bed \
