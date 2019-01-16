@@ -23,9 +23,9 @@ parallel -j5 --env HESS \
                      --local-hsqg $trait \
                      --chrom {} \
                      --bfile $HESS/1kg_eur_1pct/1kg_eur_1pct_chr{} \
-                     --partition-file $HESS/nygcresearch-ldetect-data-ac125e47bf7f/EUR/fourier_ls-chr{}.bed \
+                     --partition $HESS/nygcresearch-ldetect-data-ac125e47bf7f/EUR/fourier_ls-chr{}.bed \
                      --out $trait' ::: $(seq 22)
 
 # Step 2 - compute local SNP heritability
   
-python $HESS/hess.py --prefix $trait --k 50 --out $trait.h2g
+python $HESS/hess.py --prefix $trait --out $trait.h2g
