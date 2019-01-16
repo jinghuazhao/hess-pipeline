@@ -20,8 +20,8 @@ hess.sh `GWAS-summary-statistics`
 
 where `GWAS-summary-statistics` is a file in the current directory with these columns: rsID, pos, A1, A2, Z, N, e.g., code as in [height.sh](height/height.sh), since it only involve rsids chromosomal positions were added on.
 
+NOTE that HESS describes bed file in line with UCSC (https://genome.ucsc.edu/).
+
 ## Output
 
 The output will be available from its corresponding .tmp subdirectory.
-
-NOTE that HESS describes bed file as with UCSC (https://genome.ucsc.edu/).
