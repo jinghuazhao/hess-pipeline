@@ -6,6 +6,7 @@ module load python/2.7.10
 
 export trait=$1
 export HESS=/scratch/jhz22/hess
+export pwd=${PWD}
 export wd=$(pwd)/$(basename $trait).tmp
 
 echo $wd
@@ -14,7 +15,7 @@ if [ ! -d $wd ]; then
    mkdir -p $wd
 fi
 cd $wd
-ln -fs ${pwd}$trait
+ln -fs ${pwd}/$trait
 
 # Step 1 - setup/eigenvalues and projections
 
