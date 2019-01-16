@@ -1,5 +1,5 @@
 #!/bin/bash
-# 16-1-2019 MRC-Epid JHZ
+# 16-1-2019 JHZ
 
 export HEIGHT=https://portals.broadinstitute.org/collaboration/giant/images/0/01/GIANT_HEIGHT_Wood_et_al_2014_publicrelease_HapMapCeuFreq.txt.gz
 
